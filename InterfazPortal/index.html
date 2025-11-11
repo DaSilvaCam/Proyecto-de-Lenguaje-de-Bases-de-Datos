@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Voz Tica — Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="top">
+  <!-- NAVBAR -->
+  <header class="topbar">
+    <!-- Volver al inicio -->
+    <a href="#top" class="brand" id="brandHome" aria-label="Ir al inicio">
+      <span class="title">LA VOZ TICA</span>
+      <small class="subtitle">Noticias de Costa Rica</small>
+    </a>
+
+    <nav class="nav">
+      <!-- Categorias navbar -->
+      <a href="#">Nacionales</a>
+      <a href="#">Internacionales</a>
+      <a href="#">Deportes</a>
+      <a href="#">Opinión</a>
+
+      <!-- Botón de inicio de sesion -->
+      <a href="#" id="loginBtn" class="btn-login">Iniciar sesión</a>
+
+      <!-- Usuario cuando hay inicio de sesion -->
+      <button id="userMenu" class="user-menu" style="display:none;">
+        <div class="avatar">
+          <img id="userAvatar" alt="Avatar" />
+          <span id="userInitials" class="initials"></span>
+        </div>
+        <span id="userName">Usuario</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Buscador -->
+  <section class="hero">
+    <h1>Bienvenid@ al portal de noticias</h1>
+    <input type="text" placeholder="Buscar noticias..." />
+  </section>
+
+  <!-- CONTENIDO -->
+  <main class="content">
+    <!-- Últimas noticias -->
+    <aside class="sidebar">
+      <h2>Últimas noticias</h2>
+      <ul>
+        <li><a href="#news-1">Nueva ley de protección ambiental</a></li>
+        <li><a href="#news-2">Crecimiento económico 2025</a></li>
+        <li><a href="#news-3">Tecnología costarricense en alza</a></li>
+      </ul>
+    </aside>
+
+    <!--Noticias -->
+    <section class="news">
+     
+      <article class="card" id="news-1" data-id="1">
+        <img src="https://picsum.photos/seed/1/800/400" alt="Imagen">
+        <div class="info">
+          <h3><a class="card-title" href="#news-1">Ley de Seguridad Ciudadana</a></h3>
+          <p>El congreso aprueba nuevas medidas de seguridad ciudadana en todo el país.</p>
+
+          <div class="card-actions">
+            <div class="rating" aria-label="Calificación">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
+              <span class="rating-value" id="rating-1">(0)</span>
+            </div>
+            <button class="save-btn" data-save="1">📎 Guardar</button>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="card" id="news-2" data-id="2">
+        <img src="https://picsum.photos/seed/2/800/400" alt="Imagen">
+        <div class="info">
+          <h3><a class="card-title" href="#news-2">Innovación tecnológica</a></h3>
+          <p>Una startup nacional revoluciona el sector de energía limpia.</p>
+
+          <div class="card-actions">
+            <div class="rating" aria-label="Calificación">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
+              <span class="rating-value" id="rating-2">(0)</span>
+            </div>
+            <button class="save-btn" data-save="2">📎 Guardar</button>
+          </div>
+        </div>
+      </article>
+
+      
+      <article class="card" id="news-3" data-id="3">
+        <img src="https://picsum.photos/seed/3/800/400" alt="Imagen">
+        <div class="info">
+          <h3><a class="card-title" href="#news-3">Elecciones 2025</a></h3>
+          <p>Los candidatos se preparan para la próxima contienda electoral.</p>
+
+          <div class="card-actions">
+            <div class="rating" aria-label="Calificación">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
+              <span class="rating-value" id="rating-3">(0)</span>
+            </div>
+            <button class="save-btn" data-save="3">📎 Guardar</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+   
+    <aside class="rightbar">
+      <h2>Mis guardados</h2>
+      <ul id="savedList" class="saved-list">
+        
+      </ul>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 La Voz Tica | Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- LOGIN -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeLogin">×</button>
+      <h2>Iniciar sesión</h2>
+      <form id="loginForm">
+        <label for="loginEmail">Correo electrónico</label>
+        <input type="email" id="loginEmail" placeholder="ejemplo@correo.com" required>
+
+        <label for="loginPassword">Contraseña</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" required>
+
+        <button type="submit" class="btn-login-modal">Entrar</button>
+      </form>
+
+      <!-- Enlace para registro -->
+      <p class="muted small">¿No tienes cuenta? <a href="#" id="goRegister">Regístrate</a></p>
+    </div>
+  </div>
+
+  <!-- REGISTRO -->
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeRegister">×</button>
+      <h2>Crear cuenta</h2>
+      <form id="registerForm">
+        <label for="regName">Nombre</label>
+        <input type="text" id="regName" placeholder="Tu nombre" required>
+
+        <label for="regLast">Apellidos</label>
+        <input type="text" id="regLast" placeholder="Tus apellidos" required>
+
+        <label for="regEmail">Correo electrónico</label>
+        <input type="email" id="regEmail" placeholder="ejemplo@correo.com" required>
+
+        <label for="regPassword">Contraseña</label>
+        <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" minlength="6" required>
+
+        <label for="regPhoto">Foto de perfil (opcional)</label>
+        <input type="file" id="regPhoto" accept="image/*">
+
+        <button type="submit" class="btn-login-modal">Crear cuenta</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PERFIL -->
+  <div id="profileModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeProfile">×</button>
+      <h2>Mi perfil</h2>
+
+      <div class="profile-card">
+        <div class="avatar big">
+          <img id="profileAvatar" alt="Avatar">
+          <span id="profileInitials" class="initials"></span>
+        </div>
+
+        <form id="profileForm">
+          <label>Nombre</label>
+          <input type="text" id="profName" required>
+
+          <label>Apellidos</label>
+          <input type="text" id="profLast" required>
+
+          <label>Correo</label>
+          <input type="email" id="profEmail" disabled>
+
+          <label>Foto (opcional)</label>
+          <input type="file" id="profPhoto" accept="image/*">
+
+          <div class="profile-actions">
+            <button type="submit" class="btn-save">Guardar cambios</button>
+            <button type="button" id="logoutBtn" class="btn-out">Cerrar sesión</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
