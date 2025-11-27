@@ -1,0 +1,5 @@
+com\lavoztica\api\dao\NoticiasDao.class
+com\lavoztica\api\Application.class
+com\lavoztica\api\service\NoticiasService.class
+com\lavoztica\api\controller\NoticiasController.class
+com\lavoztica\api\config\WebConfig.class

@@ -1,6 +1,7 @@
 /*Estado y utilidades (LocalStorage)*/
 const LS_USERS_KEY   = 'newsportal_users';
 const LS_CURRENT_KEY = 'newsportal_current_email';
+const API_BASE = 'http://localhost:8080/api';
 
 const loadUsers  = () => JSON.parse(localStorage.getItem(LS_USERS_KEY) || '{}');
 const saveUsers  = (users) => localStorage.setItem(LS_USERS_KEY, JSON.stringify(users));
@@ -22,12 +23,42 @@ const fileToBase64 = (file) => new Promise((resolve,reject)=>{
 });
 
 // Catálogo de noticias 
+/*
 const NEWS = {
   '1': { title: 'Ley de Seguridad Ciudadana', anchor: '#news-1' },
   '2': { title: 'Innovación tecnológica',     anchor: '#news-2' },
   '3': { title: 'Elecciones 2025',            anchor: '#news-3' },
-};
+};*/
 
+
+
+async function cargarUltimasNoticiasSidebar() {
+    try {
+        const resp = await fetch(`${API_BASE}/noticias/ultimas?max=5`);
+        const noticias = await resp.json();
+
+        const ul = document.getElementById("ultimas-noticias-list");
+        ul.innerHTML = "";  
+
+        noticias.forEach((noticia, index) => {
+            const li = document.createElement("li");
+            const anchorId = `news-${index + 1}`; 
+
+            li.innerHTML = `
+                <a href="#${anchorId}" class="link-noticia">${noticia.titulo}</a>
+            `;
+
+            ul.appendChild(li);
+        });
+
+    } catch (err) {
+        console.error("Error cargando últimas noticias:", err);
+    }
+}
+
+  document.addEventListener("DOMContentLoaded", () => {
+    cargarUltimasNoticiasSidebar();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   // Navbar / usuario
@@ -321,6 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
   });
+
+
 
   /* -------------------- INIT -------------------- */
   refreshNavbar();
